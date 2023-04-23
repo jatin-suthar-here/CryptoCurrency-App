@@ -7,24 +7,6 @@
 
 import SwiftUI
 
-func debounce(delay: TimeInterval, queue: DispatchQueue = .main, action: @escaping (() -> Void)) -> () -> Void {
-    var lastFireTime = DispatchTime.now()
-    let dispatchDelay = DispatchTimeInterval.milliseconds(Int(delay * 1000))
-    
-    return {
-        lastFireTime = DispatchTime.now()
-        let dispatchTime = lastFireTime + dispatchDelay
-        queue.asyncAfter(deadline: dispatchTime) {
-            let now = DispatchTime.now()
-            let when = lastFireTime + dispatchDelay
-            if now >= when {
-                action()
-            }
-        }
-    }
-}
-
-
 struct AllCoinsView: View {
     
     @StateObject var viewModel : HomeViewModel
@@ -78,7 +60,7 @@ struct AllCoinsView: View {
                     ForEach(viewModel.filtercoins()) { coin in
                         
                         NavigationLink {
-                            CoinDetailsView2(coin: coin)
+                            CoinDetailsView(coin: coin)
                         }
                         label: {
                             CoinRowView(coin: coin)
@@ -93,7 +75,7 @@ struct AllCoinsView: View {
                     ForEach(viewModel.coins) { coin in
                         
                         NavigationLink {
-                            CoinDetailsView2(coin: coin)
+                            CoinDetailsView(coin: coin)
                         }
                         label: {
                             CoinRowView(coin: coin)

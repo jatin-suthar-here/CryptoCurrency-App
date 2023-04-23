@@ -1,7 +1,30 @@
+//
+//  CoinDetailsView2.swift
+//  CryptoApp
+//
+//  Created by Jatin Suthar on 18/04/23.
+//
+
+import SwiftUI
+
 
 import SwiftUI
 import Kingfisher
 
+func optionalToStringNew(val : Any) -> String
+{
+    switch val
+    {
+        case let val as Double:
+            return String(val)
+        case let val as Int:
+            return String(val)
+        case let val as String:
+            return String(val)
+        default:
+            return ""
+    }
+}
 
 struct CoinDetailsView: View {
     
@@ -13,7 +36,9 @@ struct CoinDetailsView: View {
     
     var coin : Coin
     
+    let options = ["Overview", "Charts", "Stats"]
     
+    @State private var selectedOption = "Charts"
     @State private var backgroundColor: Color = .clear
     @Environment(\.colorScheme) var colorScheme
     
@@ -36,7 +61,7 @@ struct CoinDetailsView: View {
             self.coin = coin
         }
     }
-        
+    
     var body: some View {
         
         ZStack
@@ -49,7 +74,7 @@ struct CoinDetailsView: View {
                 .fill(.linearGradient(colors: [backgroundColor, .black, .black], startPoint: .top, endPoint: .bottom))
                 .ignoresSafeArea()
             
-            ScrollView
+            ScrollView(showsIndicators: false)
             {
                 KFImage(URL(string: coin.image))
                     .onSuccess { result in
@@ -60,249 +85,48 @@ struct CoinDetailsView: View {
                     .resizable()
                     .frame(width: 230, height: 230)
                     .clipShape(Circle())
-                    .overlay{
+                    .overlay {
                         Circle().stroke(.blue, lineWidth: 5)
                             .frame(width: 250, height: 250)
                     }
                     .padding([ .horizontal, .vertical ])
                     .padding(.top, 20)
                 
-                VStack(alignment: .leading) {
-                    ZStack
-                    {
-                        Rectangle()
-                            .frame(width: Screenwidth, height: 130)
-                            .foregroundColor(.white.opacity(0.04))
-                            .cornerRadius(15)
-                        Rectangle()
-                            .frame(width: Screenwidth, height: 130)
-                            .foregroundColor(backgroundColor.opacity(0.3))
-                            .cornerRadius(15)
-                        
-                        VStack(alignment: .leading)
-                        {
-                            Text(coin.name)
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            
-                            HStack {
-                                Text(coin.symbol.uppercased())
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.blue)
-                                Text("\(coin.marketCapRank)")
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.purple)
-                                Spacer()
-                                VStack(alignment: .trailing)
-                                {
-                                    Text("PC 24H")
-                                        .font(.caption)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.gray)
-                                    let sign = (coin.priceChangePercentage24H > 0 ? "+" : "")
-                                    Text(sign + coin.priceChangePercentage24H.toPercetString())
-                                        .fontWeight(.bold)
-                                        .foregroundColor(coin.priceChangePercentage24H > 0 ? .green : .red)
-                                }
-                            }
-                            .font(.headline)
-                            
-                            HStack
-                            {
-                                Text(coin.currentPrice.toCurrency())
-                                    .font(.system(size: 23))
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.green)
-                                Text("CP")
-                                    .font(.system(size: 15))
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.gray)
-                                    .offset(x: -1, y: 2)
-                            }
-                        }
-                        .padding(.horizontal, 20)
-                    }
-                    
-                    ZStack
-                    {
-                        Rectangle()
-                            .frame(width: Screenwidth, height: 230)
-                            .foregroundColor(.white.opacity(0.04))
-                            .cornerRadius(15)
-                            .padding(.bottom, 7)
-                        
-                        Rectangle()
-                            .frame(width: Screenwidth, height: 230)
-                            .foregroundColor(backgroundColor.opacity(0.3))
-                            .cornerRadius(15)
-                            .padding(.bottom, 7)
-                        
-                        HStack {
-                            Spacer()
-                            Divider()
-                                .overlay(Color(.systemGray3))
-                            Spacer()
-                            Divider()
-                                .overlay(Color(.systemGray3))
-                            Spacer()
-                            Divider()
-                                .overlay(Color(.systemGray3))
-                            Spacer()
-                            Divider()
-                                .overlay(Color(.systemGray3))
-                            Spacer()
-                        }
-                        .frame(height: 228)
-                        .offset(y:-3)
-                        
-                        VStack(alignment: .leading)
-                        {
-                            Spacer()
-                            HStack {
-                                GeometryReader { geometry in
-                                    Path { path in
-                                        for index in data.indices
-                                        {
-                                            let xpostion = geometry.size.width / CGFloat(data.count) * CGFloat(index + 1)
-                                            let yAxis = maxY - minY
-                                            
-                                            // here we are subtracting from 1 because (0,0) is at the top left of the screen and 1000 is at the bottom right of the screen, which is like inverse of the actual graph... so we are making it inverse again so that (0,0) lies at the botton left and 1000 lies at top right of the screen.
-                                            let yPosition = (1-CGFloat((data[index] - minY) / yAxis)) * geometry.size.height
-                                            
-                                            if index == 0 {
-                                                path.move(to: CGPoint(x: xpostion, y: yPosition))
-                                            }
-                                            path.addLine(to: CGPoint(x: xpostion, y: yPosition))
-                                        }
-                                    }
-                                    .stroke(lineColor, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
-                                }
-                                .frame(width: Screenwidth-70, height: 160)
-                                .background(
-                                    VStack
-                                    {
-                                        Divider()
-                                            .overlay(Color(.systemGray3))
-                                        Spacer()
-                                        Divider()
-                                            .overlay(Color(.systemGray3))
-                                        Spacer()
-                                        Divider()
-                                            .overlay(Color(.systemGray3))
-                                        Spacer()
-                                        Divider()
-                                            .overlay(Color(.systemGray3))
-                                        Spacer()
-                                        Divider()
-                                            .overlay(Color(.systemGray3))
-                                    }
-                                    .padding(.bottom, 7)
-                                )
-                                .clipped()
-                                
-                                VStack
-                                {
-                                    let point1 = (2 * minY + maxY) / 3
-                                    let point2 = (minY + 2 * maxY) / 3
-                                    Text("\(maxY.toNormalString())")
-                                        .padding(.top, 5)
-                                    Spacer()
-                                    Text("\(point2.toNormalString())")
-                                    Spacer()
-                                    Text("\(point1.toNormalString())")
-                                    Spacer()
-                                    Text("\(minY.toNormalString())")
-                                }
-                                .font(minY > 10000 ? .caption2 : .caption)
-                                .foregroundColor(.white)
-                                .offset(x: minY > 10000 ? -5 : 5)
-                                .padding(.leading, minY > 300 ? 0 : 10)
-                            }
-                            Divider()
-                                .overlay(Color(.white))
-                                .padding(.top, 10)
-                            
-                            HStack {
-                                Text("\(getCurrentMonth()[3])")
-                                Spacer()
-                                Text("\(getCurrentMonth()[2])")
-                                Spacer()
-                                Text("\(getCurrentMonth()[1])")
-                                Spacer()
-                                Text("\(getCurrentMonth()[0])")
-                                Spacer()
-                            }
-                            .padding(.horizontal, 10)
-                            .foregroundColor(.white)
-                            .padding(.bottom, 15)
-                            .font(.subheadline)
-                            
-                        }
-                        
-                    }
-                    
-                    ZStack
-                    {
-                        let excludedProperties = ["sparklineIn7D", "image", "id", "symbol", "name", "currentPrice",  "priceChangePercentage24H"]
-                        let arr = Array(Mirror(reflecting: coin).children).filter { !excludedProperties.contains($0.label ?? "") }
-                        
-                        Rectangle()
-                            .frame(width: Screenwidth)
-                            .foregroundColor(.white.opacity(0.04))
-                            .cornerRadius(15)
-                        Rectangle()
-                            .frame(width: Screenwidth)
-                            .foregroundColor(backgroundColor.opacity(0.3))
-                            .cornerRadius(15)
-                        
-                        VStack(alignment: .leading)
-                        {
-                            ForEach(arr , id: \.label)
-                            {
-                                index in
-                                HStack {
-                                    let label = index.label!
-                                    Text(label + " :")
-                                        .font(.headline)
-                                        .foregroundColor(.white)
-                                        .frame(width: (Screenwidth/2), alignment: .leading)
-                                        .padding(.leading, 10)
-                                    
-                                    if let val = optionalToString(val: index.value)
-                                    {
-                                        Text(val)
-                                            .font(.headline)
-                                            .foregroundColor(Color(.lightGray))
-                                    }
-                                    else
-                                    {
-                                        Text("ERROR")
-                                            .font(.headline)
-                                            .foregroundColor(.gray)
-                                    }
-                                    
-                                }
-                                .padding(.vertical, 10)
-                                
-                                Divider()
-                                    .frame(width: Screenwidth-40)
-                                    .padding(.leading, 20)
-                                    .overlay(.gray)
-                            }
-                        }
-                        .padding(10)
+                
+                Picker("Select an option", selection: $selectedOption) {
+                    ForEach(options, id: \.self) { option in
+                        Text(option)
                     }
                 }
+                .pickerStyle(.segmented)
+                .frame(width: Screenwidth)
                 .padding()
+                
+                getViewForSelectedOption()
             }
             .navigationTitle(coin.name)
             .navigationBarTitleDisplayMode(.inline)
+            
+            
+            
         }
         
         
-    
         
+        
+    }
+    
+    private func getViewForSelectedOption() -> some View {
+        switch selectedOption {
+            case "Overview":
+                return AnyView(CoinStatsView(coin: coin, backgroundCol: backgroundColor))
+            case "Charts":
+                return AnyView(CoinChartsView(coin: coin, backgroundCol: backgroundColor))
+            case "Stats":
+                return AnyView(OverviewView(coin: coin, backgroundCol: backgroundColor))
+            default:
+                return AnyView(Text("Invalid option default"))
+        }
     }
     
     func getCurrentMonth() -> [String] {
@@ -342,5 +166,6 @@ struct CoinDetailsView: View {
         }
         return month_arr
     }
-    
 }
+
+
