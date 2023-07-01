@@ -6,12 +6,28 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct CryptoAppApp: App {
+    
+    @StateObject var viewModel = AuthViewModel()
+    @StateObject var authMinor = AuthMinorModel()
+    @StateObject var successNotificationManager = SuccessNotificationManager()
+    
+    init()
+    {
+        FirebaseApp.configure()
+        
+    }
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            ContentView()
+                .environmentObject(viewModel)
+                .environmentObject(authMinor)
+                .environmentObject(successNotificationManager)
+
         }
     }
 }

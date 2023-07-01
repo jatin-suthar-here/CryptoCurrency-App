@@ -20,9 +20,8 @@ class HomeViewModel : ObservableObject {
     // () -> represents empty array...
     @Published var coins = [Coin]()
     @Published var topMovingCoins = [Coin]()
-    
     @Published var searchText: String = ""
-    
+     
     // @Published is wrapper property used in conjunction with ObservableObject.
     // Any changes in object will reflect in Views...
     
@@ -33,7 +32,7 @@ class HomeViewModel : ObservableObject {
     
     func fetchCoinData() {
         //  Defining URL for API communication
-        let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h"
+        let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=Inr&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=24h"
         
         // Converting into actual URL object
         guard let url = URL(string: urlString) else { return }
@@ -56,18 +55,35 @@ class HomeViewModel : ObservableObject {
             
             // getting API generated Data
             guard let data = data else { return }
-            let _ = String(data: data, encoding: .utf8)
+//            let dataString = String(data: data, encoding: .utf8)
 //            print("DEBUG : \(dataString ?? "value")")
             
             
             do {
-                // decoding data as an array : "decode([Coin].self"
-                let coins = try JSONDecoder().decode([Coin].self, from: data)
-                
-                DispatchQueue.main.async {
-                    self.coins = coins
-                    self.configureTopMovingCoins()
+                if let jsonArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                    // Decode each dictionary in the JSON array
+                    var coins = [Coin]()
+                    for jsonDictionary in jsonArray {
+                        if let jsonData = try? JSONSerialization.data(withJSONObject: jsonDictionary, options: []) {
+                            if let coin = try? JSONDecoder().decode(Coin.self, from: jsonData) {
+                                coins.append(coin)
+                            }
+                        }
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.coins = coins
+                        self.configureTopMovingCoins()
+                    }
                 }
+                // -------------- main code ------------------
+                // decoding data as an array : "decode([Coin].self"
+//                let coins = try JSONDecoder().decode([Coin].self, from: data)
+//                DispatchQueue.main.async {
+//                    self.coins = coins
+//                    self.configureTopMovingCoins()
+//                }
+                // --------------------------------------------
             }
             catch let error {
                 print("DEBUG : failed to decode data \(error)")
@@ -84,9 +100,7 @@ class HomeViewModel : ObservableObject {
 //        print(" FILTERED DATA : \(coins.filter { $0.name.lowercased().contains(searchTextLowercased) }.map { $0.name })")
         return coins.filter { $0.name.lowercased().contains(searchTextLowercased) || $0.symbol.lowercased().contains(searchTextLowercased) }
     }
-    
-    
-    
+
     
     func configureTopMovingCoins()
     {

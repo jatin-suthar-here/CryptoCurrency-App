@@ -6,13 +6,9 @@
 //
 
 import SwiftUI
-
-
-import SwiftUI
 import Kingfisher
 
-func optionalToStringNew(val : Any) -> String
-{
+func optionalToStringNew(val : Any) -> String {
     switch val
     {
         case let val as Double:
@@ -38,9 +34,16 @@ struct CoinDetailsView: View {
     
     let options = ["Overview", "Charts", "Stats"]
     
-    @State private var selectedOption = "Charts"
+    @State private var selectedOption = "Overview"
     @State private var backgroundColor: Color = .clear
+    @State private var scale: CGFloat = 1.0
+    @State private var isScaleActive: Bool = false
+    @State private var isFavourite: Bool = false
+    
+    @EnvironmentObject var viewModel: AuthViewModel
     @Environment(\.colorScheme) var colorScheme
+    // Sheet Changes
+    @Environment(\.presentationMode) var presentationMode
     
     init(coin: Coin) {
         if let prices = coin.sparklineIn7D?.price {
@@ -63,7 +66,7 @@ struct CoinDetailsView: View {
     }
     
     var body: some View {
-        
+        NavigationView {
         ZStack
         {
             Rectangle()
@@ -74,56 +77,186 @@ struct CoinDetailsView: View {
                 .fill(.linearGradient(colors: [backgroundColor, .black, .black], startPoint: .top, endPoint: .bottom))
                 .ignoresSafeArea()
             
-            ScrollView(showsIndicators: false)
-            {
-                KFImage(URL(string: coin.image))
-                    .onSuccess { result in
+                VStack
+                {
+                    // BACK button.....
+                    // Sheet Changes
+                    HStack {
+                        Button(action: { presentationMode.wrappedValue.dismiss() },
+                               label: {
+                            Image(systemName: "chevron.backward")
+                                .font(.title2)
+                                .fontWeight(.heavy)
+                                .foregroundColor(.white)
+                                .frame(minWidth: 40, minHeight: 30)
+                                .contentShape(Rectangle())
+                        })
+                        Spacer()
+                    }
+                    .padding(.bottom, -20)
+                    .padding(.horizontal, 20)
+                    
+                    
+                    // Center Info...
+                    ScrollView(showsIndicators: false)
+                    {
+                        VStack(spacing: 20)
+                        {
+                            // Coin Image...
+                            GeometryReader {
+                                geometry in
+                                HStack
+                                {
+                                    let opacityValue = shouldHideImage(in: geometry) ? 0 : 1.0
+                                    
+                                    Spacer()
+                                    KFImage(URL(string: coin.image))
+                                        .onSuccess { result in
+                                            let uiColor = result.image.averageColor
+                                            backgroundColor = Color(uiColor ?? .purple)
+                                        }
+                                        .resizable()
+                                        .onAppear {
+                                            viewModel.CheckIsFavourite(coinName: coin.name) { result in
+                                                print("check is fav : ", result)
+                                                isFavourite = result
+                                            }
+                                        }
+                                    // placing before creating ring...so that only image gets smaller not ring
+                                        .scaleEffect(scale)
+                                        .frame(width: 200, height: 200)
+                                        .clipShape(Circle())
+                                        .overlay {
+                                            Circle().stroke(.blue, lineWidth: 5)
+                                                .frame(width: 220, height: 220)
+                                        }
+                                        .padding(.horizontal)
+                                        .padding(.top, -15)
+                                        .opacity(opacityValue).animation(.easeOut(duration: 0.3), value: opacityValue)
+                                        .offset(y: -geometry.frame(in: .global).minY + 110)
+                                        .onTapGesture {
+                                            withAnimation {
+                                                if isScaleActive
+                                                {
+                                                    scale = 1
+                                                    isScaleActive = false
+                                                }
+                                                else {
+                                                    scale = 0.5
+                                                    isScaleActive = true
+                                                }
+                                            }
+                                        }
+                                        .zIndex(1)
+                                    
+                                    
+                                    Spacer()
+                                }
+                            }
+                            .frame(height: 260)
+                            
+                            // Picker Options...
+                            Picker("Select an option", selection: $selectedOption) {
+                                ForEach(options, id: \.self) { option in
+                                    Text(option)
+                                }
+                            }
+                            .pickerStyle(.segmented)
+                            .frame(width: Screenwidth)
+                            .background(backgroundColor.opacity(0.2))
+                            .cornerRadius(8)
+                            .padding(.top, -10)
+                            .padding(.bottom, -5)
+                            .zIndex(2)
+                            
+                            // Coin Views...
+                            getViewForSelectedOption()
+                            
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    
+                    Spacer()
+                    
+                    
+                    // BUY & SELL buttons...
+                    HStack(spacing: 0) {
+                        Spacer()
+                        NavigationLink(destination: BuyCoins(backgroundColor: backgroundColor, coin: coin)
+                            .navigationBarBackButtonHidden(true)){
+                            Text("BUY")
+                                .frame(maxWidth: Screenwidth, maxHeight: 20)
+                                .padding(10)
+                                .fontWeight(.bold)
+                                .background(.green.opacity(0.7))
+                                .cornerRadius(6)
+                                .foregroundColor(.white)
+                                .contentShape(Rectangle())
+                        }
                         
-                        let uiColor = result.image.averageColor
-                        backgroundColor = Color(uiColor ?? .purple)
+                        Spacer()
+                        NavigationLink(destination: SellCoins(backgroundColor: backgroundColor, coin: coin)
+                            .navigationBarBackButtonHidden(true)) {
+                            Text("SELL")
+                                .frame(maxWidth: Screenwidth, maxHeight: 20)
+                                .padding(10)
+                                .fontWeight(.bold)
+                                .background(.red.opacity(0.7))
+                                .cornerRadius(6)
+                                .foregroundColor(.white)
+                                .contentShape(Rectangle())
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            if isFavourite {
+                                isFavourite = false
+                                viewModel.addToFavourite(coinName: coin.name)
+                            }
+                            else {
+                                isFavourite = true
+                                viewModel.addToFavourite(coinName: coin.name)
+                            }
+                        },
+                               label: {
+                            Image(systemName: isFavourite ? "heart.fill" : "heart")
+                                .frame(width: Screenwidth/10, height: 20)
+                                .padding(10)
+                                .fontWeight(.bold)
+                                .background(.gray.opacity(0.5))
+                                .cornerRadius(6)
+                                .foregroundColor(isFavourite ? .red : .white)
+                                .contentShape(Rectangle())
+                        })
+                        Spacer()
                     }
-                    .resizable()
-                    .frame(width: 230, height: 230)
-                    .clipShape(Circle())
-                    .overlay {
-                        Circle().stroke(.blue, lineWidth: 5)
-                            .frame(width: 250, height: 250)
-                    }
-                    .padding([ .horizontal, .vertical ])
-                    .padding(.top, 20)
-                
-                
-                Picker("Select an option", selection: $selectedOption) {
-                    ForEach(options, id: \.self) { option in
-                        Text(option)
-                    }
+                    .zIndex(1)
+                    .padding(.horizontal, 18)
                 }
-                .pickerStyle(.segmented)
-                .frame(width: Screenwidth)
-                .padding()
                 
-                getViewForSelectedOption()
             }
-            .navigationTitle(coin.name)
-            .navigationBarTitleDisplayMode(.inline)
-            
-            
-            
         }
         
         
-        
-        
+    }
+                                       
+
+    
+    func shouldHideImage(in geometry: GeometryProxy) -> Bool {
+        let minY = geometry.frame(in: .global).minY
+        let offset = CGFloat(0)
+        return minY < -offset
     }
     
     private func getViewForSelectedOption() -> some View {
         switch selectedOption {
             case "Overview":
-                return AnyView(CoinStatsView(coin: coin, backgroundCol: backgroundColor))
+                return AnyView(OverviewView(coin: coin, backgroundCol: backgroundColor))
             case "Charts":
                 return AnyView(CoinChartsView(coin: coin, backgroundCol: backgroundColor))
             case "Stats":
-                return AnyView(OverviewView(coin: coin, backgroundCol: backgroundColor))
+                return AnyView(CoinStatsView(coin: coin, backgroundCol: backgroundColor))
             default:
                 return AnyView(Text("Invalid option default"))
         }
@@ -167,5 +300,4 @@ struct CoinDetailsView: View {
         return month_arr
     }
 }
-
 

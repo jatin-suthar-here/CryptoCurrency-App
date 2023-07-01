@@ -46,6 +46,7 @@ struct TopMoversItemView: View {
             
         }
         .frame(width: 200, height: 140)
+//        .background(colorScheme == .dark ? backgroundColor : backgroundColor)
         .background(.linearGradient(colors: colorScheme == .dark ? [backgroundColor, Color(backgroundColor2.adjust(by: -70) ?? .purple)] : [Color(backgroundColor2.adjust(by: 30) ?? .purple), Color(backgroundColor2.adjust(by: 60) ?? .purple)], startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 2.7, y: 2.7)))
         .cornerRadius(15)
     }

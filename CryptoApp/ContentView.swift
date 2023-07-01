@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct ContentView: View {
+    
+    @EnvironmentObject var viewModel : AuthViewModel
+    @EnvironmentObject var authMinor : AuthMinorModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+            if viewModel.userSession != nil {
+                HomeView(authViewModel: viewModel)
+            }
+            else
+            {
+                LoginOrProfile()
+            }
     }
 }
 

@@ -11,6 +11,7 @@ extension Double
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
         formatter.numberStyle = .currency
+        formatter.currencyCode = "INR"
         formatter.minimumFractionDigits = 2
         formatter.maximumFractionDigits = 2
         return formatter
@@ -27,7 +28,7 @@ extension Double
     
     func toCurrency() -> String
     {
-        return currencyFormatter.string(for: self) ?? "$0.00"
+        return currencyFormatter.string(for: self) ?? "₹0.00"
     }
     
     func toPercetString() -> String

@@ -12,7 +12,6 @@ struct Portfolio: View {
     let Screenwidth = (UIScreen.main.bounds.width) - 30
     
     var body: some View {
-
         VStack(alignment: .leading) {
             Text("Total Balance")
                 .font(.headline)

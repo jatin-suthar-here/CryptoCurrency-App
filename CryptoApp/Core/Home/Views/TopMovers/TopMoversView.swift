@@ -5,6 +5,10 @@ struct TopMoversView: View {
     
     @StateObject var viewModel: HomeViewModel
     
+    // Sheet Changes
+    @State private var isExpanded = false
+    @Binding var selectedCoin: Coin?
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -18,10 +22,14 @@ struct TopMoversView: View {
                         NavigationLink {
                             CoinDetailsView(coin: coin)
                         }
-                    label: {
-                        TopMoversItemView(coin: coin)
-                            .padding(.trailing, 3)
-                    }
+                        label: {
+                            TopMoversItemView(coin: coin)
+                                .padding(.trailing, 3)
+                            // Sheet Changes
+                                .onTapGesture {
+                                    selectedCoin = coin
+                                }
+                        }
                         
                     }
                     
@@ -36,8 +44,8 @@ struct TopMoversView: View {
     }
 }
 
-struct TopMoversView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopMoversView(viewModel: HomeViewModel())
-    }
-}
+//struct TopMoversView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TopMoversView(viewModel: HomeViewModel())
+//    }
+//}

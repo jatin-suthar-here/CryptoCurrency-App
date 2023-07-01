@@ -135,8 +135,6 @@ struct CoinRowView: View {
             }
             .frame(width: (UIScreen.main.bounds.width - 26), height: 65)
             
-//            .background(colorScheme == .dark ? backgroundColor.opacity(0.2) : backgroundColor.opacity(0.5))
-            
             // Gradient Color
             .background(colorScheme == .dark ? (.linearGradient(colors: [backgroundColor.opacity(0.3), .black.opacity(0.1)], startPoint: UnitPoint(x: 0, y: 0), endPoint: UnitPoint(x: 1.3, y: 1.3)))
                                 :

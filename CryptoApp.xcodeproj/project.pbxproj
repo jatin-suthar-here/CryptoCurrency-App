@@ -9,12 +9,29 @@
 /* Begin PBXBuildFile section */
 		91322B9329F3D43A0094FA45 /* optionalToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91322B9229F3D43A0094FA45 /* optionalToString.swift */; };
 		91322B9929F551FD0094FA45 /* CoinChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91322B9829F551FD0094FA45 /* CoinChartsView.swift */; };
+		9136FC062A06111900D0A01C /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136FC052A06111900D0A01C /* AuthViewModel.swift */; };
+		9136FC092A067D7700D0A01C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9136FC082A067D7700D0A01C /* FirebaseAuth */; };
+		9136FC0B2A067D7700D0A01C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9136FC0A2A067D7700D0A01C /* FirebaseDatabase */; };
+		9136FC0D2A067D7700D0A01C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9136FC0C2A067D7700D0A01C /* FirebaseFirestore */; };
+		9136FC0F2A067D7700D0A01C /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9136FC0E2A067D7700D0A01C /* FirebaseFirestoreSwift */; };
+		9136FC112A067D7700D0A01C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9136FC102A067D7700D0A01C /* FirebaseStorage */; };
+		9136FC182A10DF6300D0A01C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136FC172A10DF6300D0A01C /* SwiftUIView.swift */; };
+		9136FC1B2A11373A00D0A01C /* PortfolioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136FC1A2A11373A00D0A01C /* PortfolioView.swift */; };
+		9136FC1D2A11425F00D0A01C /* FavouriteCoinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136FC1C2A11425F00D0A01C /* FavouriteCoinsView.swift */; };
+		9136FC202A13CBDA00D0A01C /* FavCoinListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136FC1F2A13CBDA00D0A01C /* FavCoinListView.swift */; };
+		9136FC222A16874100D0A01C /* FavCoinRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9136FC212A16874100D0A01C /* FavCoinRowView.swift */; };
 		914B16FB29EBADB600C6B447 /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B16FA29EBADB600C6B447 /* Portfolio.swift */; };
 		914B16FD29EBC4D200C6B447 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B16FC29EBC4D200C6B447 /* SearchBarView.swift */; };
 		914B16FF29EBCB3900C6B447 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 914B16FE29EBCB3900C6B447 /* UIApplication.swift */; };
 		9159E82C29EF003700880909 /* OverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9159E82B29EF003700880909 /* OverviewView.swift */; };
 		9159E82E29EF01E100880909 /* CoinStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9159E82D29EF01E100880909 /* CoinStatsView.swift */; };
 		918C30D129CE094C0053EF5B /* MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918C30D029CE094C0053EF5B /* MarketData.swift */; };
+		91B3BE332A3B4AB700347D0A /* ActiveUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3BE322A3B4AB700347D0A /* ActiveUsers.swift */; };
+		91B3BE352A3B72F000347D0A /* AuthMinor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3BE342A3B72F000347D0A /* AuthMinor.swift */; };
+		91B3BE392A3DB06500347D0A /* LoginOrProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3BE382A3DB06500347D0A /* LoginOrProfile.swift */; };
+		91B3BE3B2A3DC67100347D0A /* ManageActiveUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3BE3A2A3DC67100347D0A /* ManageActiveUsers.swift */; };
+		91B3BE432A47337C00347D0A /* TickBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3BE422A47337C00347D0A /* TickBoxView.swift */; };
+		91B3BE482A4825C900347D0A /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B3BE472A4825C900347D0A /* CreditCardView.swift */; };
 		91BAC39829CA13BD0064766F /* CryptoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BAC39729CA13BD0064766F /* CryptoAppApp.swift */; };
 		91BAC39A29CA13BD0064766F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BAC39929CA13BD0064766F /* ContentView.swift */; };
 		91BAC39C29CA13BE0064766F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91BAC39B29CA13BE0064766F /* Assets.xcassets */; };
@@ -30,17 +47,39 @@
 		91BAC3BD29CA16610064766F /* CoinDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BAC3BC29CA16610064766F /* CoinDetailsView.swift */; };
 		91BAC3BF29CA16760064766F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BAC3BE29CA16760064766F /* HomeViewModel.swift */; };
 		91BAC3C329CA16FF0064766F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 91BAC3C229CA16FF0064766F /* Kingfisher */; };
+		91DB69572A1A689E00037793 /* BuyCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB69562A1A689E00037793 /* BuyCoins.swift */; };
+		91DB69592A1A749700037793 /* SellCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB69582A1A749700037793 /* SellCoins.swift */; };
+		91DB695B2A1E73D100037793 /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DB695A2A1E73D100037793 /* InputFieldView.swift */; };
+		91F4EF5A29FFD92C00E567E2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F4EF5929FFD92C00E567E2 /* LoginView.swift */; };
+		91F4EF5C29FFDEF800E567E2 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F4EF5B29FFDEF800E567E2 /* InputView.swift */; };
+		91F4EF6229FFF29A00E567E2 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F4EF6129FFF29A00E567E2 /* SignupView.swift */; };
+		91F4EF6729FFF92B00E567E2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F4EF6629FFF92B00E567E2 /* ProfileView.swift */; };
+		91F4EF692A000E4000E567E2 /* SettingRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F4EF682A000E4000E567E2 /* SettingRowView.swift */; };
+		91F4EF6B2A0015FF00E567E2 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F4EF6A2A0015FF00E567E2 /* Users.swift */; };
+		91F4EF6D2A001F1B00E567E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91F4EF6C2A001F1B00E567E2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		91322B9229F3D43A0094FA45 /* optionalToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optionalToString.swift; sourceTree = "<group>"; };
 		91322B9829F551FD0094FA45 /* CoinChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinChartsView.swift; sourceTree = "<group>"; };
+		9136FC052A06111900D0A01C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		9136FC172A10DF6300D0A01C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		9136FC1A2A11373A00D0A01C /* PortfolioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioView.swift; sourceTree = "<group>"; };
+		9136FC1C2A11425F00D0A01C /* FavouriteCoinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCoinsView.swift; sourceTree = "<group>"; };
+		9136FC1F2A13CBDA00D0A01C /* FavCoinListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCoinListView.swift; sourceTree = "<group>"; };
+		9136FC212A16874100D0A01C /* FavCoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCoinRowView.swift; sourceTree = "<group>"; };
 		914B16FA29EBADB600C6B447 /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
 		914B16FC29EBC4D200C6B447 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		914B16FE29EBCB3900C6B447 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		9159E82B29EF003700880909 /* OverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewView.swift; sourceTree = "<group>"; };
 		9159E82D29EF01E100880909 /* CoinStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinStatsView.swift; sourceTree = "<group>"; };
 		918C30D029CE094C0053EF5B /* MarketData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketData.swift; sourceTree = "<group>"; };
+		91B3BE322A3B4AB700347D0A /* ActiveUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveUsers.swift; sourceTree = "<group>"; };
+		91B3BE342A3B72F000347D0A /* AuthMinor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMinor.swift; sourceTree = "<group>"; };
+		91B3BE382A3DB06500347D0A /* LoginOrProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOrProfile.swift; sourceTree = "<group>"; };
+		91B3BE3A2A3DC67100347D0A /* ManageActiveUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageActiveUsers.swift; sourceTree = "<group>"; };
+		91B3BE422A47337C00347D0A /* TickBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickBoxView.swift; sourceTree = "<group>"; };
+		91B3BE472A4825C900347D0A /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
 		91BAC39429CA13BD0064766F /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91BAC39729CA13BD0064766F /* CryptoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppApp.swift; sourceTree = "<group>"; };
 		91BAC39929CA13BD0064766F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +96,16 @@
 		91BAC3BA29CA16470064766F /* CoinRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRowView.swift; sourceTree = "<group>"; };
 		91BAC3BC29CA16610064766F /* CoinDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailsView.swift; sourceTree = "<group>"; };
 		91BAC3BE29CA16760064766F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		91DB69562A1A689E00037793 /* BuyCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoins.swift; sourceTree = "<group>"; };
+		91DB69582A1A749700037793 /* SellCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellCoins.swift; sourceTree = "<group>"; };
+		91DB695A2A1E73D100037793 /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		91F4EF5929FFD92C00E567E2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		91F4EF5B29FFDEF800E567E2 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		91F4EF6129FFF29A00E567E2 /* SignupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		91F4EF6629FFF92B00E567E2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		91F4EF682A000E4000E567E2 /* SettingRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRowView.swift; sourceTree = "<group>"; };
+		91F4EF6A2A0015FF00E567E2 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		91F4EF6C2A001F1B00E567E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "CryptoApp/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +113,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9136FC0F2A067D7700D0A01C /* FirebaseFirestoreSwift in Frameworks */,
+				9136FC0B2A067D7700D0A01C /* FirebaseDatabase in Frameworks */,
+				9136FC0D2A067D7700D0A01C /* FirebaseFirestore in Frameworks */,
 				91BAC3C329CA16FF0064766F /* Kingfisher in Frameworks */,
+				9136FC092A067D7700D0A01C /* FirebaseAuth in Frameworks */,
+				9136FC112A067D7700D0A01C /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,15 +133,83 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		9136FC022A0610E800D0A01C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91F4EF6129FFF29A00E567E2 /* SignupView.swift */,
+				91B3BE382A3DB06500347D0A /* LoginOrProfile.swift */,
+				91B3BE322A3B4AB700347D0A /* ActiveUsers.swift */,
+				91B3BE3A2A3DC67100347D0A /* ManageActiveUsers.swift */,
+				91F4EF5929FFD92C00E567E2 /* LoginView.swift */,
+				91F4EF5B29FFDEF800E567E2 /* InputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9136FC042A06110400D0A01C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9136FC052A06111900D0A01C /* AuthViewModel.swift */,
+				91B3BE342A3B72F000347D0A /* AuthMinor.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9136FC142A10DE9400D0A01C /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				914B16FC29EBC4D200C6B447 /* SearchBarView.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
+		9136FC162A10DED900D0A01C /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				914B16FA29EBADB600C6B447 /* Portfolio.swift */,
+				9136FC1A2A11373A00D0A01C /* PortfolioView.swift */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		9136FC192A11270300D0A01C /* BuyAndSell */ = {
+			isa = PBXGroup;
+			children = (
+				91DB69562A1A689E00037793 /* BuyCoins.swift */,
+				91DB69582A1A749700037793 /* SellCoins.swift */,
+				91DB695A2A1E73D100037793 /* InputFieldView.swift */,
+				91B3BE422A47337C00347D0A /* TickBoxView.swift */,
+			);
+			path = BuyAndSell;
+			sourceTree = "<group>";
+		};
+		9136FC1E2A13CBBA00D0A01C /* FavouriteCoins */ = {
+			isa = PBXGroup;
+			children = (
+				9136FC1F2A13CBDA00D0A01C /* FavCoinListView.swift */,
+				9136FC212A16874100D0A01C /* FavCoinRowView.swift */,
+				9136FC1C2A11425F00D0A01C /* FavouriteCoinsView.swift */,
+			);
+			path = FavouriteCoins;
+			sourceTree = "<group>";
+		};
 		9159E82629EEF7AF00880909 /* CoinDetails */ = {
 			isa = PBXGroup;
 			children = (
-				9159E82D29EF01E100880909 /* CoinStatsView.swift */,
-				91322B9829F551FD0094FA45 /* CoinChartsView.swift */,
 				9159E82B29EF003700880909 /* OverviewView.swift */,
+				91322B9829F551FD0094FA45 /* CoinChartsView.swift */,
+				9159E82D29EF01E100880909 /* CoinStatsView.swift */,
 				91BAC3BC29CA16610064766F /* CoinDetailsView.swift */,
 			);
 			path = CoinDetails;
+			sourceTree = "<group>";
+		};
+		91B3BE462A4825A900347D0A /* CardDetails */ = {
+			isa = PBXGroup;
+			children = (
+				91B3BE472A4825C900347D0A /* CreditCardView.swift */,
+			);
+			path = CardDetails;
 			sourceTree = "<group>";
 		};
 		91BAC38B29CA13BD0064766F = {
@@ -109,13 +231,14 @@
 		91BAC39629CA13BD0064766F /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
-				91322B9129F3D4100094FA45 /* Helpers */,
 				91BAC3A629CA14020064766F /* Extensions */,
 				91BAC3AB29CA15280064766F /* Models */,
+				91322B9129F3D4100094FA45 /* Helpers */,
 				91BAC3AE29CA15640064766F /* Core */,
 				91BAC3C029CA169F0064766F /* App */,
 				91BAC39929CA13BD0064766F /* ContentView.swift */,
 				91BAC39B29CA13BE0064766F /* Assets.xcassets */,
+				91F4EF6C2A001F1B00E567E2 /* GoogleService-Info.plist */,
 				91BAC39D29CA13BE0064766F /* CryptoApp.entitlements */,
 				91BAC39E29CA13BE0064766F /* Preview Content */,
 			);
@@ -152,6 +275,7 @@
 		91BAC3AE29CA15640064766F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				91F4EF5829FFD8E500E567E2 /* Authentication */,
 				91BAC3AF29CA156F0064766F /* Home */,
 			);
 			path = Core;
@@ -169,14 +293,17 @@
 		91BAC3B029CA15AE0064766F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				91B3BE462A4825A900347D0A /* CardDetails */,
+				9136FC1E2A13CBBA00D0A01C /* FavouriteCoins */,
+				9136FC192A11270300D0A01C /* BuyAndSell */,
+				9136FC162A10DED900D0A01C /* Portfolio */,
+				91F4EF6529FFF91400E567E2 /* Profile */,
+				91F4EF5729FFD3B300E567E2 /* TopMovers */,
+				91F4EF5629FFD38300E567E2 /* CoinRows */,
 				9159E82629EEF7AF00880909 /* CoinDetails */,
+				9136FC142A10DE9400D0A01C /* SearchBar */,
 				91BAC3B229CA15D60064766F /* HomeView.swift */,
-				914B16FC29EBC4D200C6B447 /* SearchBarView.swift */,
-				914B16FA29EBADB600C6B447 /* Portfolio.swift */,
-				91BAC3B429CA15FE0064766F /* TopMoversView.swift */,
-				91BAC3B629CA16190064766F /* TopMoversItemView.swift */,
-				91BAC3B829CA162F0064766F /* AllCoinsView.swift */,
-				91BAC3BA29CA16470064766F /* CoinRowView.swift */,
+				9136FC172A10DF6300D0A01C /* SwiftUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				91BAC3BE29CA16760064766F /* HomeViewModel.swift */,
+				91F4EF6A2A0015FF00E567E2 /* Users.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -195,6 +323,42 @@
 				91BAC39729CA13BD0064766F /* CryptoAppApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		91F4EF5629FFD38300E567E2 /* CoinRows */ = {
+			isa = PBXGroup;
+			children = (
+				91BAC3B829CA162F0064766F /* AllCoinsView.swift */,
+				91BAC3BA29CA16470064766F /* CoinRowView.swift */,
+			);
+			path = CoinRows;
+			sourceTree = "<group>";
+		};
+		91F4EF5729FFD3B300E567E2 /* TopMovers */ = {
+			isa = PBXGroup;
+			children = (
+				91BAC3B429CA15FE0064766F /* TopMoversView.swift */,
+				91BAC3B629CA16190064766F /* TopMoversItemView.swift */,
+			);
+			path = TopMovers;
+			sourceTree = "<group>";
+		};
+		91F4EF5829FFD8E500E567E2 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				9136FC042A06110400D0A01C /* ViewModel */,
+				9136FC022A0610E800D0A01C /* Views */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		91F4EF6529FFF91400E567E2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				91F4EF6629FFF92B00E567E2 /* ProfileView.swift */,
+				91F4EF682A000E4000E567E2 /* SettingRowView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +379,11 @@
 			name = CryptoApp;
 			packageProductDependencies = (
 				91BAC3C229CA16FF0064766F /* Kingfisher */,
+				9136FC082A067D7700D0A01C /* FirebaseAuth */,
+				9136FC0A2A067D7700D0A01C /* FirebaseDatabase */,
+				9136FC0C2A067D7700D0A01C /* FirebaseFirestore */,
+				9136FC0E2A067D7700D0A01C /* FirebaseFirestoreSwift */,
+				9136FC102A067D7700D0A01C /* FirebaseStorage */,
 			);
 			productName = CryptoApp;
 			productReference = 91BAC39429CA13BD0064766F /* CryptoApp.app */;
@@ -246,6 +415,7 @@
 			mainGroup = 91BAC38B29CA13BD0064766F;
 			packageReferences = (
 				91BAC3C129CA16FF0064766F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 91BAC39529CA13BD0064766F /* Products */;
 			projectDirPath = "";
@@ -263,6 +433,7 @@
 			files = (
 				91BAC3A029CA13BE0064766F /* Preview Assets.xcassets in Resources */,
 				91BAC39C29CA13BE0064766F /* Assets.xcassets in Resources */,
+				91F4EF6D2A001F1B00E567E2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,22 +446,43 @@
 			files = (
 				914B16FF29EBCB3900C6B447 /* UIApplication.swift in Sources */,
 				91322B9329F3D43A0094FA45 /* optionalToString.swift in Sources */,
+				9136FC1B2A11373A00D0A01C /* PortfolioView.swift in Sources */,
 				9159E82C29EF003700880909 /* OverviewView.swift in Sources */,
 				9159E82E29EF01E100880909 /* CoinStatsView.swift in Sources */,
 				91BAC39A29CA13BD0064766F /* ContentView.swift in Sources */,
 				91BAC3B929CA162F0064766F /* AllCoinsView.swift in Sources */,
 				91BAC3BB29CA16470064766F /* CoinRowView.swift in Sources */,
+				9136FC222A16874100D0A01C /* FavCoinRowView.swift in Sources */,
 				91BAC3B529CA15FE0064766F /* TopMoversView.swift in Sources */,
+				9136FC1D2A11425F00D0A01C /* FavouriteCoinsView.swift in Sources */,
+				91B3BE482A4825C900347D0A /* CreditCardView.swift in Sources */,
 				91BAC3AA29CA144D0064766F /* UIColorImage.swift in Sources */,
+				91B3BE3B2A3DC67100347D0A /* ManageActiveUsers.swift in Sources */,
 				91322B9929F551FD0094FA45 /* CoinChartsView.swift in Sources */,
 				918C30D129CE094C0053EF5B /* MarketData.swift in Sources */,
 				91BAC3B729CA16190064766F /* TopMoversItemView.swift in Sources */,
 				91BAC3A829CA14270064766F /* Double.swift in Sources */,
 				91BAC3BF29CA16760064766F /* HomeViewModel.swift in Sources */,
 				91BAC3B329CA15D60064766F /* HomeView.swift in Sources */,
+				91DB69572A1A689E00037793 /* BuyCoins.swift in Sources */,
+				91F4EF5A29FFD92C00E567E2 /* LoginView.swift in Sources */,
+				91DB69592A1A749700037793 /* SellCoins.swift in Sources */,
+				91F4EF6729FFF92B00E567E2 /* ProfileView.swift in Sources */,
+				9136FC062A06111900D0A01C /* AuthViewModel.swift in Sources */,
 				914B16FD29EBC4D200C6B447 /* SearchBarView.swift in Sources */,
 				914B16FB29EBADB600C6B447 /* Portfolio.swift in Sources */,
+				91B3BE352A3B72F000347D0A /* AuthMinor.swift in Sources */,
+				91F4EF692A000E4000E567E2 /* SettingRowView.swift in Sources */,
+				91F4EF6229FFF29A00E567E2 /* SignupView.swift in Sources */,
 				91BAC3BD29CA16610064766F /* CoinDetailsView.swift in Sources */,
+				91DB695B2A1E73D100037793 /* InputFieldView.swift in Sources */,
+				91F4EF6B2A0015FF00E567E2 /* Users.swift in Sources */,
+				91B3BE332A3B4AB700347D0A /* ActiveUsers.swift in Sources */,
+				91F4EF5C29FFDEF800E567E2 /* InputView.swift in Sources */,
+				91B3BE432A47337C00347D0A /* TickBoxView.swift in Sources */,
+				9136FC182A10DF6300D0A01C /* SwiftUIView.swift in Sources */,
+				91B3BE392A3DB06500347D0A /* LoginOrProfile.swift in Sources */,
+				9136FC202A13CBDA00D0A01C /* FavCoinListView.swift in Sources */,
 				91BAC3AD29CA15380064766F /* Coin.swift in Sources */,
 				91BAC39829CA13BD0064766F /* CryptoAppApp.swift in Sources */,
 			);
@@ -508,6 +700,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		91BAC3C129CA16FF0064766F /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -519,6 +719,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9136FC082A067D7700D0A01C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		9136FC0A2A067D7700D0A01C /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		9136FC0C2A067D7700D0A01C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		9136FC0E2A067D7700D0A01C /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		9136FC102A067D7700D0A01C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9136FC072A067D7700D0A01C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
 		91BAC3C229CA16FF0064766F /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 91BAC3C129CA16FF0064766F /* XCRemoteSwiftPackageReference "Kingfisher" */;

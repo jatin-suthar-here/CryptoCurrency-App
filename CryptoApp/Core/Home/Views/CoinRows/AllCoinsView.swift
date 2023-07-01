@@ -10,7 +10,10 @@ import SwiftUI
 struct AllCoinsView: View {
     
     @StateObject var viewModel : HomeViewModel
+    
+    // Sheet Changes
     @State private var isExpanded = false
+    @Binding var selectedCoin: Coin?
     
     var body: some View {
         
@@ -64,6 +67,10 @@ struct AllCoinsView: View {
                         }
                         label: {
                             CoinRowView(coin: coin)
+                                // Sheet Changes
+                                .onTapGesture {
+                                    selectedCoin = coin
+                                }
                         }
                     }
                 }
@@ -79,6 +86,10 @@ struct AllCoinsView: View {
                         }
                         label: {
                             CoinRowView(coin: coin)
+                                // Sheet Changes
+                                .onTapGesture {
+                                    selectedCoin = coin
+                                }
                         }
                     }
                 }
@@ -103,8 +114,8 @@ struct AllCoinsView: View {
     }
 }
 
-struct AllCoinsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AllCoinsView(viewModel: HomeViewModel())
-    }
-}
+//struct AllCoinsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AllCoinsView(viewModel: HomeViewModel())
+//    }
+//}
